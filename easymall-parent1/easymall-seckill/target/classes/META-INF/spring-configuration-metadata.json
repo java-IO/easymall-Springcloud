@@ -1,0 +1,32 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "cn.tedu.seckill.config.ClusterConfig",
+      "name": "redis.cluster",
+      "type": "cn.tedu.seckill.config.ClusterConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "cn.tedu.seckill.config.ClusterConfig",
+      "name": "redis.cluster.max-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.tedu.seckill.config.ClusterConfig",
+      "name": "redis.cluster.max-total",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.tedu.seckill.config.ClusterConfig",
+      "name": "redis.cluster.min-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.tedu.seckill.config.ClusterConfig",
+      "name": "redis.cluster.nodes",
+      "type": "java.util.List<java.lang.String>"
+    }
+  ]
+}

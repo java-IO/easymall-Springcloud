@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.seckill.mapper.SecMapper">
+    <select id="selectSeckills" resultType="Seckill">
+        select * from seckill;
+    </select>
+    <select id="selectOne" resultType="Seckill">
+        select * from seckill where seckill_id=#{seckillId}
+    </select>
+    <update id="reduceNumber">
+        update seckill set number=number-1
+        where number &gt;0 and start_time &lt;now()
+        and end_time &gt;now() and seckill_id=#{seckillId}
+    </update>
+    <insert id="saveSuccess" parameterType="Success">
+        insert into success (seckill_id,user_phone,state,create_time)
+        values (#{seckillId},#{userPhone},#{state},#{createTime})
+    </insert>
+</mapper>

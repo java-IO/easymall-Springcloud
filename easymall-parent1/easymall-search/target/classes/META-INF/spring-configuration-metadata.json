@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "cn.tedu.search.config.EsConfig",
+      "name": "es",
+      "type": "cn.tedu.search.config.EsConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "cn.tedu.search.config.EsConfig",
+      "name": "es.cluster-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.tedu.search.config.EsConfig",
+      "name": "es.nodes",
+      "type": "java.util.List<java.lang.String>"
+    }
+  ]
+}

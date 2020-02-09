@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.order.mapper.OrderMapper">
+    <!--新增订单数据-->
+    <insert id="addOrder" parameterType="Order">
+        /*新增主表*/
+        insert into t_order (order_id,user_id,order_money,
+        order_time,order_receiverinfo,order_paystate)
+        values (#{orderId},#{userId},#{orderMoney},
+        #{orderTime},#{orderReceiverinfo},#{orderPaystate});
+        /*考虑order对象orderItems没有使用,新增数据到子表*/
+        /*for(OrderItem oi:orderItems)*/
+        <foreach collection="orderItems" item="oi">
+            insert into t_order_item (order_id,product_id,
+            product_name,product_price,product_image,num)
+            values(#{orderId},#{oi.productId},#{oi.productName},
+            #{oi.productPrice},#{oi.productImage},#{oi.num});
+        </foreach>
+    </insert>
+    <!--resultMap中实现数据的最终封装-->
+    <resultMap id="ORMAP" type="Order">
+        <!--封装主表对应的order对象 驼峰命名可能失效,需要一个
+        属性对应一个字段的设置-->
+        <!--主键-->
+        <id property="orderId" column="order_id"/>
+        <!--一个一个对应封装字段和属性-->
+        <result property="orderMoney" column="order_money"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="orderReceiverinfo" column="order_receiverinfo"/>
+        <result property="orderPaystate" column="order_paystate"/>
+
+        <!--orderItems封装 1对多的封装-->
+        <collection property="orderItems" javaType="ArrayList"
+        ofType="OrderItem">
+            <!--从查询的数据中封装这个每个元素的所有属性对应关系-->
+            <!--id主键-->
+            <id property="id" column="id"/>
+            <!--其他属性对应字段-->
+            <result property="orderId" column="order_id"/>
+            <result property="productId" column="product_id"/>
+            <result property="productName" column="product_name"/>
+            <result property="num" column="num"/>
+            <result property="productPrice" column="product_price"/>
+            <result property="productImage" column="product_image"/>
+        </collection>
+        <!--1对1关系使用association-->
+        <!--<association property="user" javaType="User">
+
+        </association>-->
+    </resultMap>
+    <select id="selectOrdersByUserId" resultMap="ORMAP">
+        /*从2个表格查询数据封装一个order对象*/
+        /*关联操作,直接获取所有数据,在resultmap使用*/
+        select * from t_order inner join t_order_item
+        on t_order.order_id=t_order_item.order_id and
+        t_order.user_id=#{userId};
+    </select>
+    <delete id="deleteOrder" >
+        delete from t_order where order_id=#{orderId};
+        delete from t_order_item where order_id=#{orderId};
+    </delete>
+</mapper>

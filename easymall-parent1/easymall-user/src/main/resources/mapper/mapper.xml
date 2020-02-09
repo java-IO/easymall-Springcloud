@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.user.mapper.UserMapper">
+    <select id="selectUserExistByName" resultType="int">
+        select count(user_id) from t_user
+        where user_name=#{userName};
+    </select>
+    <insert id="insertUser" parameterType="User">
+        insert into t_user (
+        user_id,user_name,user_password,user_nickname,
+        user_email
+        ) values (
+        #{userId},#{userName},#{userPassword},#{userNickname},
+        #{userEmail}
+        )
+    </insert>
+    <select id="selectUserByNameAndPassword" parameterType="User" resultType="User">
+        select * from t_user where
+        user_name=#{userName} and
+        user_password=#{userPassword};
+    </select>
+</mapper>

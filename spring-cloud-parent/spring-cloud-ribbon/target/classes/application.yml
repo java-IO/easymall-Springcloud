@@ -1,0 +1,11 @@
+server:
+  port: 9005
+#服务名称 service-hi
+spring:
+  application:
+    name: service-ribbon
+#注册中心请求地址，请求接口
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka,http://localhost:8889/eureka

@@ -1,0 +1,21 @@
+server:
+  port: 8889
+#服务名称,注册中心虽然没有自定义url接口地址
+#治理逻辑中，提供大量访问接口使用，也可以看成是微服务一员
+spring:
+  application:
+    name: eureka-server
+#注册中心访问接口地址，访问后提供详细信息
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  server:
+    #检测心跳超时保护机制
+    enable-self-preservation: false
+  instance:
+    prefer-ip-address: true
+
+

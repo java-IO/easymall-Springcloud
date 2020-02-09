@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-cart" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-common-resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-pic" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-product" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-search" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-seckill" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easymall-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-demo01" charset="UTF-8" />
+  </component>
+</project>
